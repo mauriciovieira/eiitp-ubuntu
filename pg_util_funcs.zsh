@@ -14,3 +14,9 @@ function create_pg_database() {
 function current_pg_database() {
   basename $(readlink -f /var/lib/postgresql/14/main)
 }
+
+function list_pg_databases() {
+  for dir in /var/lib/postgresql/14/main-*; do
+    echo "$(basename $dir) - $(stat -c %y $dir)"
+  done
+}
