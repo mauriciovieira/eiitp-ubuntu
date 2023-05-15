@@ -10,3 +10,7 @@ function create_pg_database() {
   sudo cp -r /var/lib/postgresql/14/main-$1 /var/lib/postgresql/14/main-$2
   sudo chown -R postgres:postgres /var/lib/postgresql/14/main-$2
 }
+
+function current_pg_database() {
+  basename $(readlink -f /var/lib/postgresql/14/main)
+}
